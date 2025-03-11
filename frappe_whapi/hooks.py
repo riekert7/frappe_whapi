@@ -260,3 +260,7 @@ doc_events = {
         "on_update_after_submit": "frappe_whatsapp.utils.run_server_script_for_doc_event"
     }
 }
+
+fixtures = {
+    "dt": "DocType", "filters": [["module", "=", "Frappe Whapi"]]
+}
