@@ -37,7 +37,7 @@ class WhapiMessage(Document):
                 frappe.throw(f"Failed to send message {str(e)}")
 
         except Exception as e:
-            log_error("Error in before_insert on Whapi Message Doctype", e)
+            frappe.log_error("Error in before_insert on Whapi Message Doctype", e)
 
 
     def notify(self, path, data):
@@ -60,7 +60,7 @@ class WhapiMessage(Document):
         except Exception as e:
             res = frappe.flags.integration_request.json()["error"]
             error_message = res.get("Error", res.get("message"))
-            log_error("Error sending Whapi message", error_message)
+            frappe.log_error("Error sending Whapi message", error_message)
             frappe.throw(msg=error_message, title=res.get("error_user_title", "Error"))
 
     def format_wa_id(phone):
@@ -73,13 +73,3 @@ class WhapiMessage(Document):
             return phone
         else:
             return phone
-
-def log_error(message, error=None):
-    """Utility function for logging errors with details."""
-    if error:
-        frappe.log_error(f"{message}: {str(error)}")
-    else:
-        frappe.log_error(message)
-
-
-
