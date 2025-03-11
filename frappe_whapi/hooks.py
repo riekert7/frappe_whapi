@@ -242,3 +242,21 @@ app_include_js = "/assets/frappe_whapi/js/frappe_whapi.js"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+doc_events = {
+    "*": {
+        "before_insert": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "after_insert": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "before_validate": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "validate": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "on_update": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "before_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "on_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "before_cancel": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "on_cancel": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "on_trash": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "after_delete": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "before_update_after_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
+        "on_update_after_submit": "frappe_whapi.utils.run_server_script_for_doc_event"
+    }
+}
