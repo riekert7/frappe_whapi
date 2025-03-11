@@ -261,6 +261,6 @@ doc_events = {
     }
 }
 
-fixtures = {
+fixtures = [
     {"dt": "DocType", "filters": [["module", "=", "Frappe Whapi"]]}
-}
+]
