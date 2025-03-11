@@ -262,5 +262,5 @@ doc_events = {
 }
 
 fixtures = {
-    "dt": "DocType", "filters": [["module", "=", "Frappe Whapi"]]
+    {"dt": "DocType", "filters": [["module", "=", "Frappe Whapi"]]}
 }
