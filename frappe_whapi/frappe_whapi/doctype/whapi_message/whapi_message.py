@@ -13,7 +13,7 @@ class WhapiMessage(Document):
                 return
 
             if self.attach and not self.attach.startswith("http"):
-                media_url = frappe.utils.get_url() + "/" + self.attach
+                media_url = frappe.utils.get_url() g+ self.attach
             else:
                 media_url = self.attach
 
