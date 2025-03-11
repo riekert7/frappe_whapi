@@ -8,7 +8,6 @@ class WhapiMessage(Document):
     """Send Whapi messages."""
     def before_insert(self):
         try:
-            frappe.log_error('hello', 'hello')
             if not self.type == 'Outgoing':
                 return
 
@@ -52,7 +51,7 @@ class WhapiMessage(Document):
             "content-type": "application/json",
             "authorization": f"Bearer {token}"
         }
-
+        frappe.log_error("Whapi Message", data)g
         try:
             response = make_post_request(url=url, headers=headers, json=data)
             self.message_id = response.get("message").get('id')
