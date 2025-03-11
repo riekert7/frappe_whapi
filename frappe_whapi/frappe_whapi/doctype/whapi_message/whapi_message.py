@@ -53,7 +53,7 @@ class WhapiMessage(Document):
         }
 
         try:
-            response = frappe.make_post_request(url=url, headers=headers, json=payload)
+            response = make_post_request(url=url, headers=headers, json=payload)
             self.message_id = response.get("message").get('id')
             self.status = response.get("message").get('status')
 
