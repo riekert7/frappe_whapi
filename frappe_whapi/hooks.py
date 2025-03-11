@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/frappe_whapi/css/frappe_whapi.css"
-# app_include_js = "/assets/frappe_whapi/js/frappe_whapi.js"
+app_include_js = "/assets/frappe_whapi/js/frappe_whapi.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/frappe_whapi/css/frappe_whapi.css"
@@ -246,23 +246,5 @@ app_license = "mit"
 doc_events = {
     "Whapi Message": {
         "before_insert": "frappe_whapi.frappe_whapi.doctype.whapi_message.whapi_message.before_insert"
-    }
-}
-
-doc_events = {
-    "*": {
-        "before_insert": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "after_insert": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "before_validate": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "validate": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "on_update": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "before_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "on_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "before_cancel": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "on_cancel": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "on_trash": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "after_delete": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "before_update_after_submit": "frappe_whapi.utils.run_server_script_for_doc_event",
-        "on_update_after_submit": "frappe_whapi.utils.run_server_script_for_doc_event"
     }
 }
