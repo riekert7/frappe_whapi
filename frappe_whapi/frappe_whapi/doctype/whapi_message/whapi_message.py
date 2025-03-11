@@ -51,7 +51,7 @@ class WhapiMessage(Document):
             "content-type": "application/json",
             "authorization": f"Bearer {token}"
         }
-        frappe.log_error("Whapi Message", data)g
+        frappe.log_error("Whapi Message", data)
         try:
             response = make_post_request(url=url, headers=headers, json=data)
             self.message_id = response.get("message").get('id')
