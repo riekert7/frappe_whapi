@@ -31,7 +31,7 @@ class WhapiMessage(Document):
                 data['filename'] = file_name
 
             try:
-                self.notify(data, self.content_type)
+                self.notify(self.content_type, data)
                 self.status = "Success"
             except Exception as e:
                 self.status = "Failed"
@@ -54,7 +54,7 @@ class WhapiMessage(Document):
         }
 
         try:
-            response = make_post_request(url=url, headers=headers, json=payload)
+            response = make_post_request(url=url, headers=headers, json=data)
             self.message_id = response.get("message").get('id')
             self.status = response.get("message").get('status')
 
