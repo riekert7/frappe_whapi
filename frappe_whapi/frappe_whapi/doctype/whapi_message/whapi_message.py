@@ -8,6 +8,7 @@ class WhapiMessage(Document):
     """Send Whapi messages."""
     def before_insert(self):
         try:
+            frappe.log_error('hello', 'hello')
             if not self.type == 'Outgoing':
                 return
 
