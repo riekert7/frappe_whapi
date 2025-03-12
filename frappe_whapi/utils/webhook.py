@@ -64,7 +64,7 @@ def process_messages(messages, whapi_channel):
             continue
 
         is_reply = 'context' in message and 'quoted_id' in message.get('context', {})
-        reply_to_message_id = message.get('context', {}).get('quoted_id') if is_reply else None
+        reply_to_message_id = message.get('context', {}).get('quoted_id', None) if is_reply else None
 
         whapi_message = {
             "doctype": "Whapi Message",
