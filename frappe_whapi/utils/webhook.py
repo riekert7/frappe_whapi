@@ -56,7 +56,8 @@ def post():
 def process_messages(messages, whapi_channel):
     """Process incoming messages."""
     for message in messages:
-        if message['type'] != 'Incoming':
+
+        if message['from_me']:
             continue
 
         is_reply = 'context' in message
