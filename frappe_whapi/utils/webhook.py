@@ -63,7 +63,7 @@ def process_messages(messages, whapi_channel):
         if message['from_me']:
             continue
 
-        is_reply = 'context' in message
+        is_reply = 'context' in message and 'quoted_id' in message['context']
         reply_to_message_id = message['context']['quoted_id'] if is_reply else None
 
         whapi_message = {
