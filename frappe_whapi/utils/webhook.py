@@ -68,7 +68,7 @@ def process_messages(messages, whapi_channel):
 
         if message['from_me']:
             message_type = 'Outgoing'
-            whapi_to = message['from']
+            whapi_to = message['chat_id'].split('@')[0]
             whapi_from = whapi_channel.get('phone_number')
         else:
             message_type = 'Incoming'
