@@ -105,7 +105,7 @@ def process_messages(messages, whapi_channel):
             file_data = get_whapi_media(whapi_channel, message[message['type']]['id'])
             if not file_data:
                 continue
-            file_extension = message[message['type']]['mime'].split('/')[1]
+            file_extension = message[message['type']]['mime_type'].split('/')[1]
             file_name = f"{frappe.generate_hash(length=10)}.{file_extension}"
             whapi_message['message'] = message[message['type']].get("caption", f"/files/{file_name}")
             message_doc = frappe.get_doc(whapi_message).insert(ignore_permissions=True)
