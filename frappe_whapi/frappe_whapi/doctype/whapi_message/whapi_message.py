@@ -43,8 +43,8 @@ class WhapiMessage(Document):
 
     def notify(self, path, data):
         """Call Whapi API."""
-        url = f"https://gate.whapi.cloud/messages/{path}"
         whapi_channel = frappe.get_doc('Whapi Channel', self.whapi_channel)
+        url = f"{whapi_channel.api_url}/messages/{path}"
         setattr(self, 'from', whapi_channel.get('phone_number'))
         token = whapi_channel.get_password('token')
         headers = {
