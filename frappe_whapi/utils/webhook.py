@@ -60,17 +60,26 @@ def process_messages(messages, whapi_channel):
     """Process incoming messages."""
     for message in messages:
 
-        if message['from_me']:
+        if frappe.db.exists("Whapi Message", {"message_id": message['id']}):
             continue
+
+        if message['from_me']:
+            message_type = 'Outgoing'
+            whapi_to = message['from']
+            whapi_from = whapi_channel.get('phone_number')
+        else:
+            message_type = 'Incoming'
+            whapi_to = whapi_channel.get('phone_number')
+            whapi_from = message['from']
 
         is_reply = 'quoted_id' in message['context']
         reply_to_message_id = message['context'].get('quoted_id') if is_reply else None
 
         whapi_message = {
             "doctype": "Whapi Message",
-            "type": "Incoming",
-            "from": message['from'],
-            "to": whapi_channel.get('phone_number'),
+            "type": message_type,
+            "from": whapi_from,
+            "to": whapi_to,
             "whapi_channel": whapi_channel.get('name'),
             "message_id": message['id'],
             "chat_id": message['chat_id'],
