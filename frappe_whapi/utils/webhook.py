@@ -63,6 +63,9 @@ def process_messages(messages, whapi_channel):
         if frappe.db.exists("Whapi Message", {"message_id": message['id']}):
             continue
 
+        if message.get('chat_name'):  # exclude group messages
+            continue
+
         if message['from_me']:
             message_type = 'Outgoing'
             whapi_to = message['from']
@@ -72,8 +75,11 @@ def process_messages(messages, whapi_channel):
             whapi_to = whapi_channel.get('phone_number')
             whapi_from = message['from']
 
-        is_reply = 'quoted_id' in message['context']
-        reply_to_message_id = message['context'].get('quoted_id') if is_reply else None
+        is_reply = False
+        reply_to_message_id = None
+        if message.get('context'):
+            is_reply = 'quoted_id' in message['context']
+            reply_to_message_id = message['context'].get('quoted_id') if is_reply else None
 
         whapi_message = {
             "doctype": "Whapi Message",
