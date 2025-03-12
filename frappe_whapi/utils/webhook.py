@@ -13,7 +13,10 @@ def webhook():
 
 def get_whapi_channel(channel_id):
     """Get Whapi channel by channel_id."""
-    channels = frappe.get_list("Whapi Channel", filters={"channel_id": channel_id}, fields=["*"], ignore_permissions=True)
+    channels = frappe.db.sql("""
+        SELECT * FROM `tabWhapi Channel`
+        WHERE channel_id = %s
+    """, (channel_id,), as_dict=True)
     if channels:  # Whapi Channel ID is unique field
         return channels[0]
     else:
