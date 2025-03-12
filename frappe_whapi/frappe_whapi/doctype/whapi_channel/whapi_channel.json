@@ -89,7 +89,7 @@
     "sort_options": 0,
     "translatable": 0,
     "trigger": null,
-    "unique": 0,
+    "unique": 1,
     "width": null
    },
    {
@@ -100,7 +100,7 @@
     "collapsible": 0,
     "collapsible_depends_on": null,
     "columns": 0,
-    "default": "https://gate.whapi.cloud/",
+    "default": "https://gate.whapi.cloud",
     "depends_on": null,
     "description": null,
     "documentation_url": null,
