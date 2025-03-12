@@ -25,8 +25,9 @@ def get_whapi_channel(channel_id):
 
 def get_whapi_media(whapi_channel, media_id):
     """Fetch Whapi media by media_id."""
+    whapi_channel = frappe.get_doc("Whapi Channel", whapi_channel.get('name'))
     media_url = f"{whapi_channel.api_url}/media/{media_id}"
-    headers = {
+    headers = {g
         'Authorization': f'Bearer {whapi_channel.get_password("token")}'
     }
     try:
