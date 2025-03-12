@@ -11,6 +11,10 @@ class WhapiMessage(Document):
             if not self.type == 'Outgoing':
                 return
 
+            # IMPORTANT: messages are logged to Frappe from the Whapi API and Frappe, thus we need to check if the API has been triggered (avoid feedback loop!)
+            if self.message_id or frappe.db.exists("Whapi Message", {"message_id": self.message_id}):
+                return
+
             if self.attach and not self.attach.startswith("http"):
                 media_url = frappe.utils.get_url() + self.attach
             else:
