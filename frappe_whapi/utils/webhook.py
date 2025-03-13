@@ -101,7 +101,7 @@ def process_messages(messages, whapi_channel):
         elif message['type'] == 'action' and message['action']['type'] == 'reaction':
             whapi_message['message'] = message['action']['emoji']
             frappe.get_doc(whapi_message).insert(ignore_permissions=True)
-        elif message['type'] in ['image', 'video', 'audio', 'sticker', 'document']:
+        elif message['type'] in ['image', 'video', 'audio', 'voice', 'gif', 'sticker', 'document']:
             file_data = get_whapi_media(whapi_channel, message[message['type']]['id'])
             if not file_data:
                 continue

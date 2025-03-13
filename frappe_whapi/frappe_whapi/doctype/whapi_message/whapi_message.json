@@ -706,7 +706,7 @@
     "non_negative": 0,
     "oldfieldname": null,
     "oldfieldtype": null,
-    "options": "\ntext\ndocument\nimage\nvideo\naudio\nflow\nreaction\nlocation\ncontact\ncontact_list\nbutton",
+    "options": "\ntext\ndocument\nimage\nvideo\naudio\nvoice\ngif\nsticker\nflow\nreaction\nlocation\ncontact\ncontact_list\nbutton",
     "parent": "Whapi Message",
     "parentfield": "fields",
     "parenttype": "DocType",
